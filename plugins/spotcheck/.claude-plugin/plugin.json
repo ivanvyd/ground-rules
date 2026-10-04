@@ -1,0 +1,20 @@
+{
+  "name": "spotcheck",
+  "version": "0.1.0",
+  "description": "Checks the files, line numbers and symbols a subagent cites before Claude repeats the report.",
+  "author": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "homepage": "https://github.com/ivanvyd/ground-rules/tree/main/plugins/spotcheck",
+  "repository": "https://github.com/ivanvyd/ground-rules",
+  "license": "MIT",
+  "keywords": ["claude-code-mod", "subagents", "verification", "references"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "mode": {
+      "type": "string",
+      "title": "Mode",
+      "description": "notify shows a line per report and notes failures to Claude, quiet only notes failures to Claude, off does nothing.",
+      "default": "notify",
+      "options": ["notify", "quiet", "off"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "wake-me",
+  "version": "0.1.0",
+  "description": "Claude ends its turn instead of polling. You watch the progress bar, and the mod wakes Claude when the file is ready.",
+  "author": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "homepage": "https://github.com/ivanvyd/ground-rules/tree/main/plugins/wake-me",
+  "repository": "https://github.com/ivanvyd/ground-rules",
+  "license": "MIT",
+  "keywords": ["claude-code-mod", "polling", "progress", "render", "wait"],
+  "types": "./types/index.d.ts"
+}

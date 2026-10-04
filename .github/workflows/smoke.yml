@@ -1,0 +1,43 @@
+name: smoke
+
+# Installs the bundle into a clean Claude Code config and checks it end to end.
+on:
+  pull_request:
+    paths:
+      - ".claude-plugin/**"
+      - "plugins/**"
+      - "scripts/smoke-install.mjs"
+      - ".github/workflows/smoke.yml"
+  push:
+    tags: ["v*", "*--v*"]
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CLAUDE_CODE_VERSION: 2.1.289
+
+jobs:
+  smoke:
+    name: smoke (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - name: Install Claude Code
+        run: npm install --global @anthropic-ai/claude-code@${{ env.CLAUDE_CODE_VERSION }}
+      - name: Smoke test from this checkout (pull requests)
+        if: github.event_name == 'pull_request'
+        run: node scripts/smoke-install.mjs
+      - name: Smoke test from GitHub (nightly, tags and manual runs)
+        if: github.event_name != 'pull_request'
+        run: node scripts/smoke-install.mjs --remote

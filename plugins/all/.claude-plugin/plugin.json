@@ -1,0 +1,11 @@
+{
+  "name": "all",
+  "version": "0.1.0",
+  "description": "Installs all five ground-rules mods: stay-put, lights-out, spotcheck, wake-me and save-point.",
+  "author": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "homepage": "https://github.com/ivanvyd/ground-rules",
+  "repository": "https://github.com/ivanvyd/ground-rules",
+  "license": "MIT",
+  "keywords": ["claude-code-mod", "bundle"],
+  "dependencies": ["stay-put", "lights-out", "spotcheck", "wake-me", "save-point"]
+}

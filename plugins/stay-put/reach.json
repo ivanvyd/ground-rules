@@ -1,0 +1,25 @@
+{
+  "hooks": [
+    "session.start",
+    "command.run{command=stay-put}",
+    "tool.describe{tool=Bash|PowerShell}",
+    "tool.check{tool=Bash|PowerShell}",
+    "classic.PostToolUse",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=stay-put}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.check",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve"
+  ]
+}
