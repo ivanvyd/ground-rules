@@ -67,6 +67,19 @@ describe('turn.complete of a subagent', () => {
     expect(h.runs.map(run => run.argv.slice(0, 3))).toEqual([['git', 'ls-files', '-z']])
   })
 
+  // The same path off Windows is covered in check.test.ts: the engine itself resolves a host-relative
+  // path before a test stub sees it, so a flow test cannot pose as another OS.
+  test('on Windows a /d/ path means the D: drive', async ($, on) => {
+    const h = stubEngine(on, { os: 'Windows_NT' })
+    h.files.set('D:/work/a.ts', 'x\n')
+    await startSession($)
+    await $.classic.PostToolUse(subagentCall('agent-1'))
+
+    await $.turn.complete(agentTurn('agent-1', 'See /d/work/a.ts:1.'))
+
+    expect(h.logs[0]).toContain('1/1')
+  })
+
   test('flags a report that cites files after zero tool calls', async ($, on) => {
     const h = stubEngine(on)
     h.files.set('D:/repo/src/a.ts', 'x\n')

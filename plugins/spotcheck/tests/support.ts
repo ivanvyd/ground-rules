@@ -25,7 +25,12 @@ type Options = {
   entries?: Record<string, unknown>
 }
 
-const slash = (path: string): string => path.replace(/\\/g, '/')
+/**
+ * The path as a test names it. On Linux and macOS the engine resolves a path that is not absolute on
+ * that host (`D:/repo/a.ts`) against the plugin folder before the call reaches the stub; this strips that
+ * prefix so Windows spellings can be tested on any host.
+ */
+const slash = (path: string): string => path.replace(/\\/g, '/').replace(/^.*?(?=[A-Za-z]:\/)/, '')
 
 /** What the engine answers beneath the mod in a real session, from memory. */
 export function stubEngine(on: On, { os = 'Windows_NT', presenting = false, entries = {} }: Options = {}): Harness {
