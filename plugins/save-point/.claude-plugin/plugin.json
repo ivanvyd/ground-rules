@@ -1,0 +1,11 @@
+{
+  "name": "save-point",
+  "version": "0.1.0",
+  "description": "Saves uncommitted work a moment before a command erases it. /save-point brings it back.",
+  "author": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "homepage": "https://github.com/ivanvyd/ground-rules/tree/main/plugins/save-point",
+  "repository": "https://github.com/ivanvyd/ground-rules",
+  "license": "MIT",
+  "keywords": ["claude-code-mod", "git", "safety", "snapshot", "restore"],
+  "types": "./types/index.d.ts"
+}

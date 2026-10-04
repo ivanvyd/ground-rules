@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Mods need Claude Code 2.1.287 or later. Bump this deliberately and read the changelog first.
+  CLAUDE_CODE_VERSION: 2.1.289
+
+jobs:
+  check:
+    name: check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - name: Install Claude Code
+        run: npm install --global @anthropic-ai/claude-code@${{ env.CLAUDE_CODE_VERSION }}
+      - run: claude --version
+      - name: Validate the marketplace and every plugin
+        run: node scripts/each-plugin.mjs validate
+      - name: Run the mod tests
+        run: node scripts/each-plugin.mjs test
+      - name: Reach gate and source rules
+        run: node scripts/check-reach.mjs

@@ -1,0 +1,57 @@
+{
+  "name": "ground-rules",
+  "owner": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "metadata": {
+    "description": "Five small Claude Code mods that enforce the ground rules an agent keeps breaking: stay in the project directory, stop what you started, check what you cite, wait instead of polling, save work before erasing it."
+  },
+  "plugins": [
+    {
+      "name": "stay-put",
+      "source": "./plugins/stay-put",
+      "description": "Bounces `cd dir && …` before it runs and gives Claude the one-command form.",
+      "version": "0.1.0",
+      "category": "shell",
+      "keywords": ["claude-code-mod", "shell", "cd"]
+    },
+    {
+      "name": "lights-out",
+      "source": "./plugins/lights-out",
+      "description": "Shows the background tasks this session left running and how much memory is free. Stops only what it started.",
+      "version": "0.1.0",
+      "category": "processes",
+      "keywords": ["claude-code-mod", "background-tasks", "memory"]
+    },
+    {
+      "name": "spotcheck",
+      "source": "./plugins/spotcheck",
+      "description": "Checks the files, line numbers and symbols a subagent cites before Claude repeats the report.",
+      "version": "0.1.0",
+      "category": "verification",
+      "keywords": ["claude-code-mod", "subagents", "verification"]
+    },
+    {
+      "name": "wake-me",
+      "source": "./plugins/wake-me",
+      "description": "Claude ends its turn instead of polling. You watch the progress bar, and the mod wakes Claude when the file is ready.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "keywords": ["claude-code-mod", "polling", "progress"]
+    },
+    {
+      "name": "save-point",
+      "source": "./plugins/save-point",
+      "description": "Saves uncommitted work a moment before a command erases it. /save-point brings it back.",
+      "version": "0.1.0",
+      "category": "safety",
+      "keywords": ["claude-code-mod", "git", "snapshot"]
+    },
+    {
+      "name": "all",
+      "source": "./plugins/all",
+      "description": "Installs all five ground-rules mods.",
+      "version": "0.1.0",
+      "category": "bundle",
+      "keywords": ["claude-code-mod", "bundle"]
+    }
+  ]
+}

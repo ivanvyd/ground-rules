@@ -1,0 +1,25 @@
+{
+  "hooks": [
+    "session.start",
+    "tool.call{tool=mcp__wake-me__wait_for}",
+    "command.run{command=waits}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=wake-me}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.prompt.submit",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ]
+}

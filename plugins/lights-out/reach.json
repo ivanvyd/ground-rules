@@ -1,0 +1,32 @@
+{
+  "hooks": [
+    "session.start",
+    "classic.PostToolUse",
+    "classic.Stop",
+    "classic.SubagentStop",
+    "session.end",
+    "command.run{command=lights-out}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=lights-out}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.process.run",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.call",
+    "$.ui.ask",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ]
+}

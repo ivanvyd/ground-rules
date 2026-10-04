@@ -1,0 +1,32 @@
+{
+  "hooks": [
+    "session.start",
+    "classic.PreToolUse",
+    "classic.PostToolUse",
+    "classic.PostToolUseFailure",
+    "command.run{command=save-point}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=save-point}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id (via file",
+    "sessionTag)",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ]
+}

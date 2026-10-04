@@ -1,0 +1,20 @@
+{
+  "name": "stay-put",
+  "version": "0.1.0",
+  "description": "Bounces `cd dir && …` before it runs and gives Claude the one-command form.",
+  "author": { "name": "Ivan Vydrin", "url": "https://github.com/ivanvyd" },
+  "homepage": "https://github.com/ivanvyd/ground-rules/tree/main/plugins/stay-put",
+  "repository": "https://github.com/ivanvyd/ground-rules",
+  "license": "MIT",
+  "keywords": ["claude-code-mod", "shell", "cd", "guard"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "mode": {
+      "type": "string",
+      "title": "Mode",
+      "description": "teach bounces a cd-chain with the one-command form, watch only counts them, off does nothing.",
+      "default": "teach",
+      "options": ["teach", "watch", "off"]
+    }
+  }
+}

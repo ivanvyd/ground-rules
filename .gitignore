@@ -1,0 +1,9 @@
+# Generated from Anthropic's declarations (all rights reserved). Never commit.
+**/.claude-plugin/types/
+.claude/types/
+# Written next to each mod by `claude plugin test`; it extends the generated types.
+plugins/*/tsconfig.json
+
+node_modules/
+*.log
+.DS_Store
